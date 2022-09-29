@@ -1,0 +1,169 @@
+
+{% extends "layouts/base.html" %}
+
+{% block title %} Feeds {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+    <!-- chartist CSS -->
+    <link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.css" rel="stylesheet">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-8 align-self-center">
+                {% if search_keyword %}
+                    <h3 class="page-title mb-0 p-0">"{{ search_keyword }}" 의 검색 결과</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+    <!--                             <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Feeds</li> -->
+                            </ol>
+                        </nav>
+                    </div>
+                {% else %}
+
+                {% endif %}
+                
+            </div>
+
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-lg-8 col-xlg-9">
+                <div class="card">
+
+                        <ul class="nav nav-tabs profile-tab" role="tablist">
+
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_main') }}" name="total">Total</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='google') }}" name="google">구글뉴스</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='blind') }}" name="blind">Blind 투자게시판</a> 
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='appstore') }}" name="appstore">Appstore</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='해외주식갤러리') }}" name="playstore">dcinside_해외주식갤러리</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='미국주식갤러리') }}" name="playstore">dcinside_미국주식갤러리</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='naver') }}" name="naver">Naver 종목토론실</a>
+                            </li>
+                        </ul>
+
+                    <tbody>
+                      {% for row in row_data %}
+                        
+                      <tr>
+
+                      <div class="tab-content">
+                       
+                          
+                                <div class="profiletimeline border-start-0">
+                                    
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img src="{{ config.ASSETS_ROOT }}/images/users/4.jpg" alt="user"
+                                                class="img-circle"> </div>
+                                        <div class="sl-right">
+                                            <div><a href="#" class="link">{{ column_names[0] }} : {{ row[0] }}</a> 
+                                                <span class="sl-date"> {{ row[2] }} </span>
+                                                <div>
+                                                    {{ row[1] }}
+                                                    <span class="sl-date"> 긍정 점수: {{ row[5] }} </span>
+                                                </div>    
+<br>
+                                                     
+                                                    {{ row[3] }}
+                                                         
+                                                    <div>
+                                                        <br>
+                                                        <a href="{{ row[7] }}" class="link" style='color:blue'> [원문보기]  </a>
+                                                    </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                        
+                      </div>
+ 
+                      <hr>
+                      {% endfor %}
+                      
+                      
+                      <div class="btns"><a href="javascript:moreList();" class="btn btn-primary">더보기</a></div>
+
+                      <script>
+                          function moreList() {    
+                              $.ajax({        
+                                  url : "/feeds",        
+                                  type : "POST",        
+                                  cache : false,        
+                                  dataType: 'json',        
+                                  data : "conectType="+conectType+"&eDate="+eDate+"&sDate="+sDate+"&codeId="+codeId+"&limit="+limit,        
+                                  success : function(data) {            
+                                      //console.log(data);            
+                                      var content="";            
+                                      for(var i=0; i<data.hashMapList.length; i++){                
+                                          content +=                
+                                              "<tr>"+
+                                              "<td>"+data.hashMapList[i].area+"</td>"+
+                                              "<td>"+data.hashMapList[i].name+"</td>"+
+                                              "<td>"+data.hashMapList[i].gubun+"</td>"+
+                                              "<td>"+data.hashMapList[i].cnt+"</td>"+
+                                              "</tr>";            }
+                                      content+="<div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>";            
+                                      $('#addbtn').remove();//remove btn            
+                                      $(content).appendTo("#table");        }, 
+                                  error:function(request, status, error) { alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                                                         }    
+                              });
+                          };
+
+                      </script>
+
+                    </tbody>
+                    
+                    <!-- Tab panes -->
+
+                        
+
+{% endblock content %}
+
+{% block javascripts %}
+
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- chartist chart -->
+    <script src="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!--c3 JavaScript -->
+    <script src="{{ config.ASSETS_ROOT }}/plugins/d3/d3.min.js"></script>
+    <script src="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ config.ASSETS_ROOT }}/js/pages/dashboards/dashboard1.js"></script>
+
+{% endblock javascripts %}    

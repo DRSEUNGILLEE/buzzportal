@@ -1,0 +1,248 @@
+ * Serving Flask app 'run.py' (lazy loading)
+ * Environment: development
+ * Debug mode: on
+[2022-08-12 09:26:59,834] INFO in run: DEBUG            = True
+[2022-08-12 09:26:59,834] INFO in run: FLASK_ENV        = development
+[2022-08-12 09:26:59,834] INFO in run: Page Compression = FALSE
+[2022-08-12 09:26:59,834] INFO in run: DBMS             = sqlite:////home/porter/miraeasset/site/flask-materialpro-lite/apps/db.sqlite3
+[2022-08-12 09:26:59,835] INFO in run: ASSETS_ROOT      = /static/assets
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.30.1.11:9997/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 647-378-182
+[2022-08-12 09:27:00,326] INFO in run: DEBUG            = True
+[2022-08-12 09:27:00,326] INFO in run: FLASK_ENV        = development
+[2022-08-12 09:27:00,326] INFO in run: Page Compression = FALSE
+[2022-08-12 09:27:00,326] INFO in run: DBMS             = sqlite:////home/porter/miraeasset/site/flask-materialpro-lite/apps/db.sqlite3
+[2022-08-12 09:27:00,326] INFO in run: ASSETS_ROOT      = /static/assets
+45.121.165.235 - - [12/Aug/2022 09:27:01] "GET /index HTTP/1.1" 200 -
+45.121.165.235 - - [12/Aug/2022 09:27:02] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:02] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:02] "[36mGET /static/assets/plugins/c3-master/c3.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:02] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:02] "[36mGET /static/assets/plugins/chartist-js/dist/chartist-init.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/images/logo-light-text.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/images/logo-light-icon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/images/users/1.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:03] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/plugins/d3/d3.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/plugins/c3-master/c3.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/js/pages/dashboards/dashboard1.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/js/custom.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/big/img1.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/big/img2.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/big/img3.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/css/icons/themify-icons/fonts/themify.woff HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/css/icons/material-design-iconic-font//fonts/materialdesignicons-webfont.woff2?v=1.8.36 HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/css/icons/font-awesome/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/big/img4.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/users/2.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/users/3.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/users/4.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 09:27:04] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:08] "[32mGET / HTTP/1.1[0m" 302 -
+45.121.165.235 - - [12/Aug/2022 11:04:08] "[32mGET /login HTTP/1.1[0m" 302 -
+45.121.165.235 - - [12/Aug/2022 11:04:08] "GET /index HTTP/1.1" 200 -
+45.121.165.235 - - [12/Aug/2022 11:04:09] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:09] "[36mGET /static/assets/plugins/chartist-js/dist/chartist-init.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:09] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:09] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:09] "[36mGET /static/assets/plugins/c3-master/c3.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/images/logo-light-icon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/images/logo-light-text.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/images/users/1.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/images/big/img1.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/images/big/img2.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:10] "[36mGET /static/assets/images/big/img3.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/plugins/d3/d3.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/plugins/c3-master/c3.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/js/pages/dashboards/dashboard1.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/js/custom.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/images/big/img4.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/images/users/2.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/images/users/4.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:11] "[36mGET /static/assets/images/users/3.jpg HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:12] "[36mGET /static/assets/css/icons/themify-icons/fonts/themify.woff HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:12] "[36mGET /static/assets/css/icons/material-design-iconic-font//fonts/materialdesignicons-webfont.woff2?v=1.8.36 HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:12] "[36mGET /static/assets/css/icons/font-awesome/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:12] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[32mGET /logout HTTP/1.1[0m" 302 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "GET /login HTTP/1.1" 200 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:23] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "POST /login HTTP/1.1" 200 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:32] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [12/Aug/2022 11:04:33] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+167.94.138.62 - - [12/Aug/2022 15:51:03] code 400, message Bad request version ('À\x14À')
+167.94.138.62 - - [12/Aug/2022 15:51:03] "[35m[1m î  ê°Þ¨aGS&pb­._-â(6¿¢Û»¾ðMÝÄb5À Î÷ÛñumÜsXjaòGQt]Æ >ê]Ç=ÇÇ&O &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+167.94.138.62 - - [12/Aug/2022 15:51:05] "[32mGET / HTTP/1.1[0m" 302 -
+167.94.138.62 - - [12/Aug/2022 15:51:05] "[32mGET / HTTP/1.1[0m" 302 -
+167.94.138.62 - - [12/Aug/2022 15:51:06] code 505, message Invalid HTTP version (2.0)
+167.94.138.62 - - [12/Aug/2022 15:51:06] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.94.138.62 - - [12/Aug/2022 15:51:06] "GET /login HTTP/1.1" 200 -
+167.94.138.62 - - [12/Aug/2022 15:51:07] code 505, message Invalid HTTP version (2.0)
+167.94.138.62 - - [12/Aug/2022 15:51:07] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+89.248.164.165 - - [12/Aug/2022 17:46:33] "[33mGET http://www.baidu.com/cache/global/img/gs.gif HTTP/1.1[0m" 404 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[32mGET / HTTP/1.1[0m" 302 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "GET /login HTTP/1.1" 200 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:55] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "[32mGET / HTTP/1.1[0m" 302 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "[32mGET /login HTTP/1.1[0m" 302 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "GET /index HTTP/1.1" 200 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "[36mGET /static/assets/plugins/chartist-js/dist/chartist-init.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:58] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/c3-master/c3.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/d3/d3.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/plugins/c3-master/c3.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/js/pages/dashboards/dashboard1.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:18:59] "[36mGET /static/assets/js/custom.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/css/icons/themify-icons/fonts/themify.woff HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/logo-light-icon.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/css/icons/font-awesome/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/css/icons/material-design-iconic-font//fonts/materialdesignicons-webfont.woff2?v=1.8.36 HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/logo-light-text.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/users/1.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/big/img1.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/big/img3.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/big/img2.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/big/img4.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/users/2.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:00] "[36mGET /static/assets/images/users/3.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:01] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:01] "[36mGET /static/assets/images/users/4.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:20] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:20] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:20] "[36mGET /static/assets/plugins/c3-master/c3.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:20] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:20] "[36mGET /static/assets/plugins/chartist-js/dist/chartist-init.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:20] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/themify-icons/fonts/themify.woff HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/material-design-iconic-font//fonts/materialdesignicons-webfont.woff2?v=1.8.36 HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/logo-light-text.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/css/icons/font-awesome/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/users/1.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/logo-light-icon.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/plugins/chartist-js/dist/chartist.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/plugins/d3/d3.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/plugins/c3-master/c3.min.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/js/pages/dashboards/dashboard1.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/js/custom.js HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/big/img1.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/big/img4.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/big/img3.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/big/img2.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/users/2.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/users/3.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/users/4.jpg HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:19:21] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+172.30.1.254 - - [13/Aug/2022 00:21:18] "[32mGET / HTTP/1.1[0m" 302 -
+172.30.1.254 - - [13/Aug/2022 00:21:18] "GET /login HTTP/1.1" 200 -
+192.241.236.21 - - [13/Aug/2022 01:44:43] code 400, message Bad request version ('À\x14À')
+192.241.236.21 - - [13/Aug/2022 01:44:43] "[35m[1m   ûLx{äim]1v8ëw@¶®.xüÏ;v  À/À+ÀÀÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+ * Serving Flask app 'run.py' (lazy loading)
+ * Environment: development
+ * Debug mode: on
+[2022-08-16 08:37:08,786] INFO in run: DEBUG            = True
+[2022-08-16 08:37:08,786] INFO in run: FLASK_ENV        = development
+[2022-08-16 08:37:08,786] INFO in run: Page Compression = FALSE
+[2022-08-16 08:37:08,786] INFO in run: DBMS             = sqlite:////home/porter/miraeasset/site/flask-materialpro-lite/apps/db.sqlite3
+[2022-08-16 08:37:08,786] INFO in run: ASSETS_ROOT      = /static/assets
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.30.1.11:9997/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 699-195-400
+[2022-08-16 08:37:09,274] INFO in run: DEBUG            = True
+[2022-08-16 08:37:09,274] INFO in run: FLASK_ENV        = development
+[2022-08-16 08:37:09,274] INFO in run: Page Compression = FALSE
+[2022-08-16 08:37:09,274] INFO in run: DBMS             = sqlite:////home/porter/miraeasset/site/flask-materialpro-lite/apps/db.sqlite3
+[2022-08-16 08:37:09,275] INFO in run: ASSETS_ROOT      = /static/assets
+45.121.165.235 - - [16/Aug/2022 08:37:10] "GET /login HTTP/1.1" 200 -
+45.121.165.235 - - [16/Aug/2022 08:37:10] "[36mGET /static/assets/css/style.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/plugins/jquery/dist/jquery.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/js/app-style-switcher.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/js/waves.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/js/sidebarmenu.js HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/css/icons/font-awesome/css/fontawesome-all.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/css/icons/simple-line-icons/css/simple-line-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/css/icons/themify-icons/themify-icons.css HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -
+45.121.165.235 - - [16/Aug/2022 08:37:11] "[36mGET /static/assets/images/favicon.png HTTP/1.1[0m" 304 -

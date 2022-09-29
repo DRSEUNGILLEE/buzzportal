@@ -1,0 +1,18 @@
+20220922-142413  Youtube_스마트머니 - NO DATA TO UPDATE
+20220922-150835  Youtube_스마트머니 - NO DATA TO UPDATE
+Traceback (most recent call last):
+  File "/home/lsi8505/miraeasset/crawling/src/youtube.py", line 144, in <module>
+    df_new = df_ttl[['SOURCE','RELATED_ITEM',"DATETIME","TITLE","CONTENT","POSITIVITY","NUM_REPLY",'URL',"CRAWLING_DATETIME","OTHERS"]]
+  File "/home/lsi8505/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py", line 3511, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+  File "/home/lsi8505/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5782, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/lsi8505/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5842, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['SOURCE', 'RELATED_ITEM', 'DATETIME', 'TITLE', 'CONTENT', 'POSITIVITY',\n       'NUM_REPLY', 'URL', 'CRAWLING_DATETIME', 'OTHERS'],\n      dtype='object')] are in the [columns]"
+20220927-150755  Youtube_스마트머니 - SUCCESS  :  2
+Traceback (most recent call last):
+  File "/home/lsi8505/miraeasset/crawling/src/youtube.py", line 135, in <module>
+    df_['URL'] =  videos_l[i]
+IndexError: list index out of range
+20220929-150832  Youtube_스마트머니 - SUCCESS  :  5

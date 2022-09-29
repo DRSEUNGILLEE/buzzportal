@@ -1,0 +1,6 @@
+docs : https://docs.appseed.us/products/flask-dashboards/materialpro-lite
+git : https://github.com/app-generator/flask-materialpro-lite
+overview : https://flask-materialpro-lite.appseed-srv1.com/index
+
+
+alls : https://www.codementor.io/@chirilovadrian360/flask-website-templates-open-source-seed-projects-1b6tya9jnl
