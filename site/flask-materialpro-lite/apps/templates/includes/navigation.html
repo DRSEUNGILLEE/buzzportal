@@ -8,14 +8,11 @@
                     <a class="navbar-brand ms-4" href="/">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="{{ config.ASSETS_ROOT }}/images/penguin.jpg" alt="homepage" class="dark-logo" width="60"/>
+                            <img src="{{ config.ASSETS_ROOT }}/images/blogo.JPG" alt="homepage" class="dark-logo" width="150"/>
 
                         </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span class="logo-text" style="color: white">Buzz Portal</span>
+
+<!--                         <span class="logo-text" style="color: white"></span> -->
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -43,15 +40,15 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-
+                        <span class="logo-text " style="color: white; font-size:32px;">   &nbsp &nbsp Buzz Portal</span>
+<!-- 
                         <li class="nav-item search-box">
                             <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
-<!--                             <form class="app-search" style="display: none;" action="http://35.216.38.136:5000/feeds" method="POST"> -->
                             <form class="app-search" style="display: none;" action="{{ url_for('home_blueprint.feeds_main') }}" method="POST">
                                 <input type="text" class="form-control" name="key_word" placeholder="검색어를 입력하세요">
                                 <input type="submit" class="form_submit" placeholder="검색">
                                 <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
+                        </li> -->
                     </ul>
 
                     <!-- ============================================================== -->

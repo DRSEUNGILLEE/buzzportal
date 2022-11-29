@@ -12,7 +12,7 @@ warnings.filterwarnings('ignore')
 from bs4 import BeautifulSoup, BeautifulStoneSoup
 
 import sqlite3 
-conn = sqlite3.connect("/home/lsi8505/miraeasset/crawling/opinion_outside.db")
+conn = sqlite3.connect("/home/buzzportal/crawling/opinion_outside.db")
 cur = conn.cursor()
 
 
@@ -132,7 +132,7 @@ df_['board_time'] = df_['board_time'].apply(lambda x :  datetime.strptime(x, '%Y
 df_['board_crawl_time'] =  board_crawl_time_l
 df_['board_url'] =  board_url_l
 df_['source'] = 'dc_gall'
-df_['updated'] = (datetime.now() + timedelta(hours=9)).strftime("%Y%m%d-%H%M%S")
+df_['updated'] = (datetime.now() ).strftime("%Y%m%d-%H%M%S")
 
 df_['DATETIME'] = df_['board_time'].apply(lambda x :  x.strftime("%Y%m%d-%H%M%S") ) 
 df_['VIEWS'] = df_['board_read']
@@ -158,7 +158,7 @@ if len(df_ttl) >0:
     df_ttl = df_ttl.reset_index(drop=True)
 
     df_ttl.to_sql('TABLE_BUZZ',conn,if_exists = 'append',index = False)
-    print((datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S') , " DC_US-STOCK , SUCCESS  : ",len(df_ttl))
+    print((datetime.now() ).strftime('%Y%m%d-%H%M%S') , " DC_US-STOCK , SUCCESS  : ",len(df_ttl))
 
 else:
-    print((datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S') , " DC_US-STOCK , NO DATA TO UPDATE")
+    print((datetime.now() ).strftime('%Y%m%d-%H%M%S') , " DC_US-STOCK , NO DATA TO UPDATE")

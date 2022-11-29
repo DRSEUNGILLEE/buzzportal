@@ -1,379 +1,351 @@
-
 {% extends "layouts/base.html" %}
 
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Dashboard {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
 
-    <!-- chartist CSS -->
-    <link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
-    <link href="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <!--This page css - Morris CSS -->
-    <link href="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.css" rel="stylesheet">
+<!-- chartist CSS -->
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css"
+    rel="stylesheet">
+<!--This page css - Morris CSS -->
+<link href="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+
+
 
 {% endblock stylesheets %}
 
 {% block content %}
 
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <div class="page-breadcrumb">
-        <div class="row align-items-center">
-            <div class="col-md-6 col-8 align-self-center">
-                <h3 class="page-title mb-0 p-0">Dashboard</h3>
-                <div class="d-flex align-items-center">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                        </ol>
-                    </nav>
-                </div>
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-md-6 col-8 align-self-center">
+            <h3 class="page-title mb-0 p-0">Dashboard</h3>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    </ol>
+                </nav>
             </div>
-            <div class="col-md-6 col-4 align-self-center">
-                <div class="text-end upgrade-btn">
+        </div>
+        <div class="col-md-6 col-4 align-self-center">
+            <!--                 <div class="text-end upgrade-btn">
                         <a href="https://appseed.us/support/"
                         class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">
                         Support        
                         </a>
+                </div> -->
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid" style="margin: 5px 5px 2px 5px; padding: 5px 5px 2px 5px;">
+    <!-- ============================================================== -->
+    <!-- Sales chart -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-8" >
+            <div class="card" style="height: 780px; width:1230px;margin: 2px 7px 2px 7px; padding: 2px 7px 2px 7px;">
+                <div class="card-body"
+                    style="height: 200px;width:1300px;margin: 5px 8px 8px 8px; padding: 5px 8px 8px 8px;">
+                    <div class="row"
+                        style="border-style:none;float:left;width:45%;margin: 5px 10px 1px 1px; padding: 5px 0px 0px 0px;">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title"> <b> BUZZs Overview </b><br> </h3>
+
+                                    <h6 class="card-subtitle"> <b>- 데이터 출처 : 유튜브, Appstore, 기타 투자게시판 등</b></h6>
+
+
+                                </div>
+                                <div class="ms-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex">
+
+                                        <li class="me-4">
+                                            <h6 style="color:black;"><i class="fa fa-circle font-10 me-2 "></i> 데이터 건수
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h6 style="color:green;"><i class="fa fa-circle font-10 me-2"></i> 긍정도</h6>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div style="height: 360px; width:100%;">
+                                <canvas id="data_num" style="width:100%;max-width:700px"></canvas>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; ★ 데이터 총 적재 건수 : {{ttl_cnt}} 건 / 금일 적재 건수 : {{today_cnt}} 건
+                                <a href="http://223.130.163.18:9000/feeds"> [세부내용보기]</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row"
+                        style="border-left:dashed;border-width:1px;float:left;width:45%;margin: 5px 20px 1px 10px; padding: 5px 0px 0px 20px;">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title"> <b>KPI Overview</b></h3>
+                                    <h6 class="card-subtitle"> <b>- 데이터 출처 : <a href="https://www.mobileindex.com/"
+                                                target="_blank"> 모바일Index</a> </b></h6>
+
+
+                                </div>
+                                <div class="ms-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex" style="width:100%;">
+
+                                        <li class="me-4">
+
+                                            <h6 style="color:orange;"><i class="fa fa-circle font-10 me-2 "></i>m.STOCK
+                                            </h6>
+                                        </li>
+                                        <li>
+
+                                            <h6 style="color:pink;"><i class="fa fa-circle font-10 me-2"></i>m.All
+                                            </h6>
+                                        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <li>
+
+                                            <h6 style="color:blue;"><i class="fa fa-circle font-10 me-2"></i>m.Global
+                                            </h6>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div style="height: 360px; width:100%;">
+                                <canvas id="data_num2" style="width:100%;max-width:700px"></canvas>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; ★ 적재 대상 데이터 : 금융 App 사용자의 MAU/DAU, 신규 설치건수, 사용시간 등
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row"  
+                        style="border-top:dashed;border-width:1px;float:left;width:90%;height:290px;margin: 1px 20px 1px 10px; padding: 30px 0px 0px 0px;">
+                        <div>
+                            <h3 class="card-title"> <b> Buzz Keywords </b><br> </h3>
+
+                            <h6 class="card-subtitle"> <b></b></h6>
+
+
+                        </div>
+
+                        <div class="chart-area">
+                            <div id="container" style="width:100%; height:100%;"></div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var xValues = ['', '8월', '9월', '10월', '','42W', '43W', '44W', '45W', '', '10/27', '10/27', '10/27', '10/27', '10/27', '10/27', '10/27'];
+
+                        new Chart("data_num", {
+                            type: "line",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    data: [, 860, 1140, 1060, , 860, 860, 1140, 1060, , 1070, 1110, 1330, 2210, 7830, 2478, 2478],
+                                    borderColor: "black",
+                                    fill: false
+                                }, {
+                                    data: [, 1600, 1700, 1700, , 1600, 860, 1700, 1700, , 2000, 2700, 4000, 5000, 6000, 7000, 7000],
+                                    borderColor: "green",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: { display: false }
+                            }
+                        });
+
+                        new Chart("data_num2", {
+                            type: "line",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    data: [, 860, 1140, 1060, , 860,  860,1140, 1060, , 1070, 1110, 1330, 2210, 7830, 2478, 2478],
+                                    borderColor: "red",
+                                    fill: false
+                                }, {
+                                    data: [, 1600, 1700, 1700, , 1600, 1600, 1700, 1700, , 2000, 2700, 4000, 5000, 6000, 7000, 7000],
+                                    borderColor: "pink",
+                                    fill: false
+                                }, {
+                                    data: [, 300, 700, 2000, , 300, 1600, 700, 2000, , 6000, 4000, 2000, 1000, 200, 100, 150],
+                                    borderColor: "blue",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: { display: false }
+                            }
+                        });
+                    </script>
+
+                    <script>
+                        anychart.onDocumentReady(function () {
+                            var data = [
+                                {
+                                    "x": "m.STOCK",
+                                    "value": 100,
+                                    category: "App"
+                                },
+                                {
+                                    "x": "하락",
+                                    "value": 30,
+                                    category: "주식"
+                                },
+                                {
+                                    "x": "미래에셋증권",
+                                    "value": 80,
+                                    category: "증권사"
+                                },
+                                {
+                                    "x": "레고랜드",
+                                    "value": 20,
+                                    category: "주식"
+                                }, {
+                                    "x": "Kospi",
+                                    "value": 50,
+                                    category: "주식"
+                                }, {
+                                    "x": "ELS",
+                                    "value": 7,
+                                    category: "주식"
+                                }, {
+                                    "x": "반등",
+                                    "value": 15,
+                                    category: "주식"
+                                }, {
+                                    "x": "m.All",
+                                    "value": 25,
+                                    category: "주식"
+                                }, {
+                                    "x": "거래량",
+                                    "value": 25,
+                                    category: "주식"
+                                }, {
+                                    "x": "삼성전자",
+                                    "value": 25,
+                                    category: "주식"
+                                }, {
+                                    "x": "신라젠",
+                                    "value": 5,
+                                    category: "주식"
+                                }, {
+                                    "x": "채권",
+                                    "value": 65,
+                                    category: "주식"
+                                }, {
+                                    "x": "MTS",
+                                    "value": 45,
+                                    category: "주식"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 13,
+                                    category: "주식"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 33,
+                                    category: "테슬라"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 23,
+                                    category: "애플"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 19,
+                                    category: "배터리"
+                                }, {
+                                    "x": "공모주",
+                                    "value": 3,
+                                    category: "주식"
+                                }, {
+                                    "x": "m.Global",
+                                    "value": 13,
+                                    category: "주식"
+                                }, {
+                                    "x": "중국",
+                                    "value": 23,
+                                    category: "주식"
+                                }, {
+                                    "x": "메타",
+                                    "value": 42,
+                                    category: "주식"
+                                }
+                            ];
+                            var chart = anychart.tagCloud(data);
+                            chart.angles([0]);
+                            chart.container("container");
+                            // chart.getCredits().setEnabled(false);
+                            chart.draw();
+                        });
+                    </script>
+
+
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
-    <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Sales chart -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <!-- Column -->
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex flex-wrap align-items-center">
-                                    <div>
-                                        <h3 class="card-title">BUZZs Overview</h3>
-                                        <h6 class="card-subtitle">Blind, DCinside, Naver, Daum, News</h6>
-                                    </div>
-                                    <div class="ms-lg-auto mx-sm-auto mx-lg-0">
-                                        <ul class="list-inline d-flex">
-                                            <li class="me-4">
-                                                <h6 class="text-success"><i
-                                                        class="fa fa-circle font-10 me-2 "></i>Ample</h6>
-                                            </li>
-                                            <li>
-                                                <h6 class="text-info"><i
-                                                        class="fa fa-circle font-10 me-2"></i>Pixel</h6>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="amp-pxl" style="height: 360px;">
-                                    <div class="chartist-tooltip"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class='daham'>
+</div>
 
-            </div>
-            {{ x_axis | tojson }}
-            {{ y_axis | tojson }}
-            <script src="{{ config.ASSETS_ROOT }}/js/pages/dashboards/dashboard1.js"></script>
-            <script>
-                
-//             var daham_view = chart_daham();
-            var labels_daham = {{ x_axis | tojson }};
-            var series_daham = [{{ y_axis | tojson }}];
-                
-            </script>
-            
-            <div>
-                    {% for column in columns %}
-                    <strong><a href="{{ url_for('home_blueprint.index', key_word = column) }}">{{ column }}</a></strong>
-                    <br>
-                    {% endfor %}
-            
-            </div>
-                        
 
-            <div class="col-lg-8 col-xlg-9">
-                <div class="card">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs profile-tab" role="tablist">
-                        <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#home"
-                                role="tab">Activity</a>
-                        </li>
-                        <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#profile"
-                                role="tab">Profile</a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#settings"
-                                role="tab">Settings</a>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="home" role="tabpanel">
-                            <div class="card-body">
-                                <div class="profiletimeline border-start-0">
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{ config.ASSETS_ROOT }}/images/users/1.jpg" alt="user"
-                                                class="img-circle"> </div>
-                                        <div class="sl-right">
-                                            <div><a href="#" class="link">John Doe</a> <span class="sl-date">5
-                                                    minutes ago</span>
-                                                <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-6 mb-3"><img
-                                                            src="{{ config.ASSETS_ROOT }}/images/big/img1.jpg" alt="user"
-                                                            class="img-responsive radius w-100"></div>
-                                                    <div class="col-lg-3 col-md-6 mb-3"><img
-                                                            src="{{ config.ASSETS_ROOT }}/images/big/img2.jpg" alt="user"
-                                                            class="img-responsive radius w-100"></div>
-                                                    <div class="col-lg-3 col-md-6 mb-3"><img
-                                                            src="{{ config.ASSETS_ROOT }}/images/big/img3.jpg" alt="user"
-                                                            class="img-responsive radius w-100"></div>
-                                                    <div class="col-lg-3 col-md-6 mb-3"><img
-                                                            src="{{ config.ASSETS_ROOT }}/images/big/img4.jpg" alt="user"
-                                                            class="img-responsive radius w-100"></div>
-                                                </div>
-                                                <div class="like-comm"> <a href="javascript:void(0)"
-                                                        class="link me-2">2
-                                                        comment</a> <a href="javascript:void(0)"
-                                                        class="link me-2"><i
-                                                            class="fa fa-heart text-danger"></i> 5 Love</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{ config.ASSETS_ROOT }}/images/users/2.jpg" alt="user"
-                                                class="img-circle"> </div>
-                                        <div class="sl-right">
-                                            <div> <a href="#" class="link">John Doe</a> <span class="sl-date">5
-                                                    minutes ago</span>
-                                                <div class="mt-3 row">
-                                                    <div class="col-md-3 col-xs-12"><img
-                                                            src="{{ config.ASSETS_ROOT }}/images/big/img1.jpg" alt="user"
-                                                            class="img-responsive w-100 radius"></div>
-                                                    <div class="col-md-9 col-xs-12">
-                                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                            elit. Integer nec odio. Praesent libero. Sed cursus
-                                                            ante dapibus diam. </p> <a href="#"
-                                                            class="btn btn-success text-white"> Design
-                                                            weblayout</a>
-                                                    </div>
-                                                </div>
-                                                <div class="like-comm mt-3"> <a href="javascript:void(0)"
-                                                        class="link me-2">2 comment</a> <a
-                                                        href="javascript:void(0)" class="link me-2"><i
-                                                            class="fa fa-heart text-danger"></i> 5 Love</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{ config.ASSETS_ROOT }}/images/users/3.jpg" alt="user"
-                                                class="img-circle"> </div>
-                                        <div class="sl-right">
-                                            <div><a href="#" class="link">John Doe</a> <span class="sl-date">5
-                                                    minutes ago</span>
-                                                <p class="mt-2"> Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Integer nec odio. Praesent libero. Sed
-                                                    cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh
-                                                    elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
-                                                    Fusce nec tellus sed augue semper </p>
-                                            </div>
-                                            <div class="like-comm mt-3"> <a href="javascript:void(0)"
-                                                    class="link me-2">2
-                                                    comment</a> <a href="javascript:void(0)"
-                                                    class="link me-2"><i class="fa fa-heart text-danger"></i>
-                                                    5 Love</a> </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{ config.ASSETS_ROOT }}/images/users/4.jpg" alt="user"
-                                                class="img-circle"> </div>
-                                        <div class="sl-right">
-                                            <div><a href="#" class="link">John Doe</a> <span class="sl-date">5
-                                                    minutes ago</span>
-                                                <blockquote class="mt-2">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                    sed do eiusmod tempor incididunt
-                                                </blockquote>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--second tab-->
-                        <div class="tab-pane" id="profile" role="tabpanel">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
-                                        <br>
-                                        <p class="text-muted">Johnathan Deo</p>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
-                                        <br>
-                                        <p class="text-muted">(123) 456 7890</p>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
-                                        <br>
-                                        <p class="text-muted">johnathan@admin.com</p>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6"> <strong>Location</strong>
-                                        <br>
-                                        <p class="text-muted">London</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <p class="mt-4">Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-                                    arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
-                                    dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus
-                                    elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                    porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the
-                                    1500s, when an unknown printer took a galley of type and scrambled it to
-                                    make a type specimen book. It has survived not only five centuries </p>
-                                <p>It was popularised in the 1960s with the release of Letraset sheets
-                                    containing Lorem Ipsum passages, and more recently with desktop publishing
-                                    software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                <h4 class="font-medium mt-4">Skill Set</h4>
-                                <hr>
-                                <h5 class="d-flex mt-4">Wordpress <span class="ms-auto">80%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:80%; height:6px;">
-                                        <span class="sr-only">50% Complete</span> </div>
-                                </div>
-                                <h5 class="d-flex mt-4">HTML 5 <span class="ms-auto">90%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:90%; height:6px;">
-                                        <span class="sr-only">50% Complete</span> </div>
-                                </div>
-                                <h5 class="d-flex mt-4">jQuery <span class="ms-auto">50%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:50%; height:6px;">
-                                        <span class="sr-only">50% Complete</span> </div>
-                                </div>
-                                <h5 class="d-flex mt-4">Photoshop <span class="ms-auto">70%</span></h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:70%; height:6px;">
-                                        <span class="sr-only">50% Complete</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="settings" role="tabpanel">
-                            <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
-                                    <div class="form-group">
-                                        <label class="col-md-12">Full Name</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                                class="form-control form-control-line ps-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Email</label>
-                                        <div class="col-md-12">
-                                            <input type="email" placeholder="johnathan@admin.com"
-                                                class="form-control form-control-line ps-0" name="example-email"
-                                                id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Password</label>
-                                        <div class="col-md-12">
-                                            <input type="password" value="password"
-                                                class="form-control form-control-line ps-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="123 456 7890"
-                                                class="form-control form-control-line ps-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Message</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="5"
-                                                class="form-control form-control-line ps-0"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Select Country</label>
-                                        <div class="col-sm-12 border-bottom">
-                                            <select class="form-select shadow-none border-0 form-control-line ps-0">
-                                                <option>London</option>
-                                                <option>India</option>
-                                                <option>Usa</option>
-                                                <option>Canada</option>
-                                                <option>Thailand</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success text-white">Update Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- Table -->
-        <!-- ============================================================== -->
 
-        
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
 
 {% endblock content %}
 
 {% block javascripts %}
 
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!-- chartist chart -->
-    <script src="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!--c3 JavaScript -->
-    <script src="{{ config.ASSETS_ROOT }}/plugins/d3/d3.min.js"></script>
-    <script src="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="{{ config.ASSETS_ROOT }}/js/pages/dashboards/dashboard1.js"></script>
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<!-- chartist chart -->
+<script src="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.js"></script>
+<script
+    src="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+<!--c3 JavaScript -->
+<script src="{{ config.ASSETS_ROOT }}/plugins/d3/d3.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.js"></script>
+<!--Custom JavaScript -->
+<script src="{{ config.ASSETS_ROOT }}/js/pages/dashboards/dashboard1.js"></script>
 
-{% endblock javascripts %}    
+{% endblock javascripts %}

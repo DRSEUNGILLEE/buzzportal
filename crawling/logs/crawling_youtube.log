@@ -1,18 +1,159 @@
 20220922-142413  Youtube_스마트머니 - NO DATA TO UPDATE
 20220922-150835  Youtube_스마트머니 - NO DATA TO UPDATE
+20220927-150755  Youtube_스마트머니 - SUCCESS  :  2
+20220929-150832  Youtube_스마트머니 - SUCCESS  :  5
+20220930-151128  Youtube_스마트머니 - SUCCESS  :  5
+20221001-150941  Youtube_스마트머니 - SUCCESS  :  51
+20221002-150828  Youtube_스마트머니 - SUCCESS  :  4
+20221018-161614  Youtube_스마트머니 - SUCCESS  :  7
+20221019-150811  Youtube_스마트머니 - SUCCESS  :  2
+20221020-150848  Youtube_스마트머니 - SUCCESS  :  27
+20221021-150811  Youtube_스마트머니 - SUCCESS  :  24
 Traceback (most recent call last):
-  File "/home/lsi8505/miraeasset/crawling/src/youtube.py", line 144, in <module>
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+20221023-150811  Youtube_스마트머니 - SUCCESS  :  4
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 144, in <module>
     df_new = df_ttl[['SOURCE','RELATED_ITEM',"DATETIME","TITLE","CONTENT","POSITIVITY","NUM_REPLY",'URL',"CRAWLING_DATETIME","OTHERS"]]
-  File "/home/lsi8505/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py", line 3511, in __getitem__
+  File "/root/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py", line 3511, in __getitem__
     indexer = self.columns._get_indexer_strict(key, "columns")[1]
-  File "/home/lsi8505/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5782, in _get_indexer_strict
+  File "/root/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5782, in _get_indexer_strict
     self._raise_if_missing(keyarr, indexer, axis_name)
-  File "/home/lsi8505/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5842, in _raise_if_missing
+  File "/root/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5842, in _raise_if_missing
     raise KeyError(f"None of [{key}] are in the [{axis_name}]")
 KeyError: "None of [Index(['SOURCE', 'RELATED_ITEM', 'DATETIME', 'TITLE', 'CONTENT', 'POSITIVITY',\n       'NUM_REPLY', 'URL', 'CRAWLING_DATETIME', 'OTHERS'],\n      dtype='object')] are in the [columns]"
-20220927-150755  Youtube_스마트머니 - SUCCESS  :  2
+20221025-150754  Youtube_스마트머니 - SUCCESS  :  1
+20221026-150829  Youtube_스마트머니 - SUCCESS  :  33
+20221027-150813  Youtube_스마트머니 - SUCCESS  :  5
+Error : {"status":400,"error":{"errorCode":"E001","message":"Unsupported empty or blank text"}}
+20221028-150829  Youtube_스마트머니 - SUCCESS  :  7
 Traceback (most recent call last):
-  File "/home/lsi8505/miraeasset/crawling/src/youtube.py", line 135, in <module>
-    df_['URL'] =  videos_l[i]
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
 IndexError: list index out of range
-20220929-150832  Youtube_스마트머니 - SUCCESS  :  5
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/buzzportal/crawling/src/youtube.py", line 74, in <module>
+    res_data_table =  html_res.find_all("ytd-grid-video-renderer")[1]
+IndexError: list index out of range

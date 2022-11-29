@@ -1,0 +1,274 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+<!-- chartist CSS -->
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css"
+    rel="stylesheet">
+<!--This page css - Morris CSS -->
+<link href="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-8 align-self-center">
+                <h3 class="page-title mb-0 p-0">KPIs</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('home_blueprint.index') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">KPIs</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-6 col-4 align-self-center">
+<!--                 <div class="text-end upgrade-btn">
+                        <a href="https://appseed.us/support/"
+                        class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">
+                        Support        
+                        </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid" style="margin: 5px 5px 2px 5px; padding: 5px 5px 2px 5px;height:1300px;border-style:none;"  >
+    <!-- ============================================================== -->
+    <!-- Sales chart -->
+    <!-- ============================================================== -->
+    <div class="row"  style="height:100%;">
+        <!-- Column -->
+        <div class="col-lg-8" style="height:100%;">
+            <div class="card" style="height:100%; width:1230px;margin: 2px 7px 2px 7px; padding: 2px 7px 2px 7px;">
+                <div class="card-body"
+                    style="height: 200px;width:1300px;margin: 5px 8px 8px 8px; padding: 5px 8px 8px 8px;">
+                    <div class="row"
+                        style="border-style:none;float:left;width:45%;margin: 5px 10px 1px 1px; padding: 5px 0px 0px 0px;">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title"> <b>KPI Overview</b></h3>
+                                    <h6 class="card-subtitle"> <b>- 데이터 출처 : <a href="https://www.mobileindex.com/"
+                                                target="_blank"> 모바일Index</a> </b></h6>
+
+
+                                </div>
+                                <div class="ms-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex" style="width:100%;">
+
+                                        <li class="me-4">
+
+                                            <h6 style="color:orange;"><i class="fa fa-circle font-10 me-2 "></i>m.STOCK
+                                            </h6>
+                                        </li>
+                                        <li>
+
+                                            <h6 style="color:pink;"><i class="fa fa-circle font-10 me-2"></i>m.All
+                                            </h6>
+                                        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <li>
+
+                                            <h6 style="color:blue;"><i class="fa fa-circle font-10 me-2"></i>m.Global
+                                            </h6>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div style="height: 360px; width:100%;">
+                                <canvas id="data_num2" style="width:100%;max-width:700px"></canvas>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; ★ 적재 대상 데이터 : 금융 App 사용자의 MAU/DAU, 신규 설치건수, 사용시간 등
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row"
+                        style="border-left:dashed;border-width:1px;float:left;width:45%;margin: 5px 20px 1px 10px; padding: 5px 0px 0px 20px;">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title"> <b>MAU Overview</b></h3>
+                                    <h6 class="card-subtitle"> <b>- 데이터 출처 : <a href="https://www.mobileindex.com/"
+                                                target="_blank"> 모바일Index</a> </b></h6>
+
+
+                                </div>
+                                <div class="ms-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex" style="width:100%;">
+
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div style="height: 360px; width:100%;border-style:none;">
+                                <canvas id="pieChart" style="width:100%;height:100%"></canvas>
+<!--                                 <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; ★ 적재 대상 데이터 : 금융 App 사용자의 MAU/DAU, 신규 설치건수, 사용시간 등 -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row"  
+                        style="border-top:dashed;border-width:1px;float:left;width:90%;height:290px;margin: 1px 20px 1px 10px; padding: 30px 0px 0px 0px;">
+                        <div style="">
+                            <h3 class="card-title"> <b> KPI Raw Data </b><br> </h3>
+                            <h6 class="card-subtitle"  style="float:left;"> <b> 모바일 Index 사이트에서 수집된 원천 Data</b></h6>
+
+                        <br>
+
+                                <table  style="border-bottom-style:solid;border-bottom-width:1px;width:100%;">
+                                  <tr style="border:none;border-bottom:solid;border-width:1px;border-color:grey;">
+                                    <th style="text-align: center;">Date</th>
+                                    <th style="text-align: center;">Data Type</th>
+                                    <th style="text-align: center;">Category</th>
+                                    <th style="text-align: center;">Name</th>
+                                    <th style="text-align: center;">Ratio</th>
+                                    <th style="text-align: center;">Value</th>
+
+                                  </tr>
+                                     {% for row in row_data %}
+                                  <tr>
+                                    <td  style="text-align: center;">{{row[5]}}</td>
+                                    <td  style="text-align: center;">{{row[6]}}</td>
+                                    <td  style="text-align: center;">{{row[4]}}</td>
+                                    <td  style="text-align: center;">{{row[0]}}</td>
+                                    <td  style="text-align: center;">{{row[1]}}</td>
+                                    <td  style="text-align: center;">{{row[2]}}</td>
+                                  </tr>
+                                    {% endfor %}
+                                </table>
+</div>
+                    </div>
+
+                    <script>
+                        var xValues = ['', '8월', '9월', '10월', '','42W', '43W', '44W', '45W', '', '10/27', '10/27', '10/27', '10/27', '10/27', '10/27', '10/27'];
+
+
+                        new Chart("data_num2", {
+                            type: "line",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    data: [, 860, 1140, 1060, , 860,  860,1140, 1060, , 1070, 1110, 1330, 2210, 7830, 2478, 2478],
+                                    borderColor: "red",
+                                    fill: false
+                                }, {
+                                    data: [, 1600, 1700, 1700, , 1600, 1600, 1700, 1700, , 2000, 2700, 4000, 5000, 6000, 7000, 7000],
+                                    borderColor: "pink",
+                                    fill: false
+                                }, {
+                                    data: [, 300, 700, 2000, , 300, 1600, 700, 2000, , 6000, 4000, 2000, 1000, 200, 100, 150],
+                                    borderColor: "blue",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: { display: false },
+                                
+                            }
+                        });
+                    </script>
+
+                    <script>
+
+                        
+                        var xValues = ["미래에셋증권", "삼성증권", "키움증권", "NH투자증권"];
+                        var yValues = [55, 49, 44, 24];
+                        var barColors = [
+                          "orange",
+                          "blue",
+                          "pink",
+                          "green"
+                        ];
+
+                        new Chart("pieChart", {
+                          type: "doughnut",
+                          data: {
+                            labels: xValues,
+                            datasets: [{
+                              backgroundColor: barColors,
+                              data: yValues
+                            }]
+                          },
+                          options: {
+                            title: {
+                              display: true,
+                              text: "2022년 10월 MAU 비중"
+                            },
+                          }
+                        });
+                        
+                    </script>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<!-- chartist chart -->
+<script src="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.js"></script>
+<script
+    src="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+<!--c3 JavaScript -->
+<script src="{{ config.ASSETS_ROOT }}/plugins/d3/d3.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.js"></script>
+<!--Custom JavaScript -->
+<script src="{{ config.ASSETS_ROOT }}/js/pages/dashboards/dashboard1.js"></script>
+
+{% endblock javascripts %}

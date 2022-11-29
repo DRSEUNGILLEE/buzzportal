@@ -22,7 +22,7 @@ options.add_argument('window-size=1920,1080')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('user-agent={0}'.format(user_agent))
 # options =  webdriver.Chrome('/home/porter/NOTEBOOK/chromedriver',options=options)
-conn = sqlite3.connect("/home/lsi8505/miraeasset/crawling/opinion_outside.db")
+conn = sqlite3.connect("/home/buzzportal/crawling/opinion_outside.db")
 cur = conn.cursor()
 
 client_id = "l5s8tg1g0w" # 개발자센터에서 발급받은 Client ID 값
@@ -64,8 +64,8 @@ def get_sentiment(content):
     
     
     
-    
-driver = webdriver.Chrome('/home/lsi8505/chromedriver',options=options)
+driver = webdriver.Chrome('/home/buzzportal/crawling/chromedriver',options=options)    
+# driver = webdriver.Chrome('/home/lsi8505/chromedriver',options=options)
 driver.get("https://www.youtube.com/c/SmartMoney0/videos")
 time.sleep(10)
 
@@ -83,8 +83,8 @@ videos_l
 
 
 df_ttl = pd.DataFrame()
-for i in range(len(videos_l)):
-    driver.get(videos_l[i])
+for video_num in range(len(videos_l)):
+    driver.get(videos_l[video_num])
     time.sleep(10)
     driver.execute_script("window.scrollTo(0, 1080)") 
     time.sleep(5)
@@ -131,8 +131,8 @@ for i in range(len(videos_l)):
     df_['OTHERS'] = df_[['WRITER']].to_dict('records')
     df_['OTHERS'] = df_['OTHERS'].astype(str)
     df_['NUM_REPLY'] =np.nan
-    df_['CRAWLING_DATETIME'] = (datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S')
-    df_['URL'] =  videos_l[i]
+    df_['CRAWLING_DATETIME'] = (datetime.now() ).strftime('%Y%m%d-%H%M%S')
+    df_['URL'] =  videos_l[video_num]
     df_
     df_ttl = df_ttl.append(df_)
 driver.close()
@@ -152,16 +152,16 @@ df_final = pd.DataFrame()
 df_new = df_new[~df_new['URL'].isin(df_already['URL'])].reset_index(drop=True)
 df_final = df_final.append(df_new)
 df_final
-
+driver.quit()
 
 if len(df_final) >0:
 
     df_final = df_final.reset_index(drop=True)
-#     for i in range(len(df_final)):
-#         df_final.loc[i,"POSITIVITY"] = get_sentiment(df_final.loc[i,"TITLE"])
+    for i in range(len(df_final)):
+        df_final.loc[i,"POSITIVITY"] = get_sentiment(df_final.loc[i,"TITLE"])
     df_final
     df_final.to_sql('TABLE_BUZZ',conn,if_exists = 'append',index = False)
-    print((datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S')  , " Youtube_스마트머니 - SUCCESS  : ",len(df_final))
+    print((datetime.now() ).strftime('%Y%m%d-%H%M%S')  , " Youtube_스마트머니 - SUCCESS  : ",len(df_final))
 
 else:
-    print((datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S') , " Youtube_스마트머니 - NO DATA TO UPDATE")
+    print((datetime.now() ).strftime('%Y%m%d-%H%M%S') , " Youtube_스마트머니 - NO DATA TO UPDATE")

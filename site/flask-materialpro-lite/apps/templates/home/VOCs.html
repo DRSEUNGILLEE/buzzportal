@@ -1,0 +1,423 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+<!-- chartist CSS -->
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+<link href="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css"
+    rel="stylesheet">
+<!--This page css - Morris CSS -->
+<link href="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-8 align-self-center">
+                <h3 class="page-title mb-0 p-0">VOCs</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('home_blueprint.index') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">VOCs</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-6 col-4 align-self-center">
+<!--                 <div class="text-end upgrade-btn">
+                        <a href="https://appseed.us/support/"
+                        class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">
+                        Support        
+                        </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid" style="margin: 5px 5px 2px 5px; padding: 5px 5px 2px 5px;border-style:none;height:100%;">
+    <!-- ============================================================== -->
+    <!-- Sales chart -->
+    <!-- ============================================================== -->
+    <div class="row" style="border-style:None; height:100%;">
+        <!-- Column -->
+        <div class="col-lg-8" style="border-style:None; height:100%;" >
+            <div class="card" style="border-style:None; width:1230px;height:100%;margin: 2px 7px 2px 7px; padding: 2px 7px 2px 7px;">
+                <div class="card-body"
+                    style="width:1300px;margin: 5px 8px 8px 8px; padding: 5px 8px 8px 8px;">
+                    <div class="row"
+                        style="border-style:none;float:left;width:45%;margin: 5px 10px 1px 1px; padding: 5px 0px 0px 0px;">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title"> <b> VOCs Overview </b><br> </h3>
+                                     <br>
+                                    <h6 class="card-subtitle"> <b>- 미래에셋증권과 직접 연관된 데이터</b></h6>
+                                    <br>
+                                </div>
+                                <div class="ms-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex" style="width:100%;">
+
+                                      <li class="me-4">
+                                            <h6 style="color:black;"><i class="fa fa-circle font-10 me-2 "></i> 데이터 건수
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h6 style="color:green;"><i class="fa fa-circle font-10 me-2"></i> 긍정도</h6>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div style="height: 360px; width:100%;">
+                                <canvas id="data_num" style="width:100%;"></canvas>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; ★ VOC 관련 총 적재 건수 : {{ttl_cnt}} 건 / 금일 적재 건수 : {{today_cnt}} 건
+                               
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row"
+                        style="border-left:None;border-width:1px;float:left;width:45%;margin: 5px 10px 1px 10px; padding: 5px 0px 0px 20px;">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                            <h3 class="card-title" style="border:None;border-width:1px;width:40%;float:left;"> <b> VOC Keywords </b><br> </h3>
+                             <h6 style="border:None;border-width:1px;width:100%;float:left;"> 
+                                 <Input type="date" value="?" id = "fromdate" /> ~   <Input type="date" value="?" id = "todate" />
+                             </h6>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-12" style="border:None;width:100%; height:300px;">
+                            <div class="chart-area" style="border:None;width:100%; height:100%;">
+                                <div id="container" style="border:None;width:100%; height:100%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row"  
+                        style="border-top:dashed;border-width:1px;float:left;width:90%;height:100%;margin: 1px 20px 1px 10px; padding: 30px 0px 0px 0px;">
+                        <div>
+                            <h3 class="card-title" style="border:None;border-width:1px;width:45%;float:left;"> <b> VOC Feeds </b><br> </h3>
+
+           
+   
+
+
+                        </div>
+
+                        <div   style="border:none;border-width:1px; height:100%;">
+<!--                   start voc feeds           -->
+                                            <div class="card" >
+
+                        <ul class="nav nav-tabs profile-tab" role="tablist">
+
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_main') }}" name="total">Total</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='뉴스') }}" name="google">뉴스</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='blind') }}" name="blind">Blind 투자게시판</a> 
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='appstore') }}" name="appstore">Appstore</a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='dcinside투자게시판') }}" name="playstore">dcinside_투자관련</a>
+                            </li>
+                         
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='네이버종목토론실') }}" name="naver">Naver 종목토론실</a>
+                            </li>
+
+
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='유튜브') }}" name="naver">Youtube 스마트머니</a>
+                            </li>
+                        </ul>
+                                                
+                       <tbody>
+                      {% for row in row_data %}               
+                           <tr>
+
+                                <div class="profiletimeline border-start-0" style="border:0px solid gold; margin: 10px 10px 0px 10px; padding: 0px 10px 0px 0px;">
+                                    
+                                 
+                                            <div class="sl-left"  style="margin: 10px 10px 0px 10px; padding: 0px 0px 0px 0px; "> 
+                                                {% if "블라인드" in  row[0] %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/blind.JPG" alt="user"   class="img-circle" style = "height:50px; width:50px;">
+                                                {% elif "Appstore" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/appstore.JPG" alt="user"       class="img-circle"  style = "height:50px; width:50px;">
+                                                {% elif "Playstore" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/Playstore.JPG" alt="user"     class="img-circle">                                                                                                                                                           
+                                                {% elif "네이버" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/naver.JPG" alt="user"     class="img-circle" style = "height:50px; width:50px;">
+                                                {% elif "dcinside" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/dcinside.JPG" alt="user"     class="img-circle"  style = "height:50px; width:50px;">                                                           {% elif "Youtube" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/youtube.JPG" alt="user"     class="img-circle"  style = "height:50px; width:50px;">                                                           {% elif "뉴스" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/news.JPG" alt="user"     class="img-circle" style = "height:50px; width:50px;">                                                               {% else %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/4.jpg" alt="user"     class="img-circle"  style = "height:50px; width:50px;">
+                                                {% endif %}
+                                              </div>
+                                      <div class="sl-right"  style="border:0px solid gold;" >
+                                            <div><a href="#" class="link"   style="border:px solid gold; margin: 0px 0px 0px 15px;" >{{ row[0] }}</a> 
+                                                <span class="sl-date"> 작성일 :  {{ row[2][:4] }}년 {{ row[2][4:6] }}월   {{ row[2][6:8] }}일
+                                                                                    {{ row[2][9:11] }}시  {{ row[2][11:13] }}분 </span>
+  <div  style="border:0px solid black; margin: 0px 0px 0px 15px; padding: 0px 0px 0px 15px;">
+                                                           <b>&nbsp; &nbsp;&nbsp; &nbsp; {{ row[3] }} &nbsp; &nbsp; </b>
+                                  
+                                                        {% if row[7] %}
+                                                          <a href="{{ row[7] }}" class="link" style='color:blue' target="_blank"> [원문보기]  </a>
+                                                        {% else %}
+                                                          
+                                                        {% endif %}                                                        
+                                                    </div>
+                                                    
+                                    </div>
+ 
+                                    </div>    
+                                                <div class="sl-right"> &nbsp; &nbsp; &nbsp; &nbsp; 
+                                                    {% if row[1] %}
+                                                        <span class="sl-date">관련 종목:  {{ row[1] }} / </span>  
+                                                    {% else %}
+                                                    {% endif %} 
+                                                    <span class="sl-date"> 긍정도: {{ row[5] }} % </span>
+                                                </div> 
+                                    </div>  
+                                                  
+                            </tr>
+                            <hr>
+                           {% endfor %}
+                        </tbody>
+                                  
+                                                
+                                                
+                            </div>
+<!--                   end voc feeds           -->
+   
+                        </div>
+                    </div>
+
+                    <script>
+                        var xValues = ['', '8월', '9월', '10월', '','42W', '43W', '44W', '45W', '', '10/27', '10/27', '10/27', '10/27', '10/27', '10/27', '10/27'];
+
+                        new Chart("data_num", {
+                            type: "line",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    data: [, 860, 1140, 1060, , 860, 860, 1140, 1060, , 1070, 1110, 1330, 2210, 7830, 2478, 2478],
+                                    borderColor: "black",
+                                    fill: false
+                                }, {
+                                    data: [, 1600, 1700, 1700, , 1600, 860, 1700, 1700, , 2000, 2700, 4000, 5000, 6000, 7000, 7000],
+                                    borderColor: "green",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: { display: false }
+                            }
+                        });
+
+                      
+                    </script>
+
+                    <script>
+                        anychart.onDocumentReady(function () {
+                            var data = [
+                                {
+                                    "x": "m.STOCK",
+                                    "value": 100,
+                                    category: "App"
+                                },
+                                {
+                                    "x": "하락",
+                                    "value": 30,
+                                    category: "주식"
+                                },
+                                {
+                                    "x": "미래에셋증권",
+                                    "value": 80,
+                                    category: "증권사"
+                                },
+                                {
+                                    "x": "레고랜드",
+                                    "value": 20,
+                                    category: "주식"
+                                }, {
+                                    "x": "Kospi",
+                                    "value": 50,
+                                    category: "주식"
+                                }, {
+                                    "x": "ELS",
+                                    "value": 7,
+                                    category: "주식"
+                                }, {
+                                    "x": "반등",
+                                    "value": 15,
+                                    category: "주식"
+                                }, {
+                                    "x": "m.All",
+                                    "value": 25,
+                                    category: "주식"
+                                }, {
+                                    "x": "거래량",
+                                    "value": 25,
+                                    category: "주식"
+                                }, {
+                                    "x": "삼성전자",
+                                    "value": 25,
+                                    category: "주식"
+                                }, {
+                                    "x": "신라젠",
+                                    "value": 5,
+                                    category: "주식"
+                                }, {
+                                    "x": "채권",
+                                    "value": 65,
+                                    category: "주식"
+                                }, {
+                                    "x": "MTS",
+                                    "value": 45,
+                                    category: "주식"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 13,
+                                    category: "주식"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 33,
+                                    category: "테슬라"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 23,
+                                    category: "애플"
+                                }, {
+                                    "x": "HTS",
+                                    "value": 19,
+                                    category: "배터리"
+                                }, {
+                                    "x": "공모주",
+                                    "value": 3,
+                                    category: "주식"
+                                }, {
+                                    "x": "m.Global",
+                                    "value": 13,
+                                    category: "주식"
+                                }, {
+                                    "x": "중국",
+                                    "value": 23,
+                                    category: "주식"
+                                }, {
+                                    "x": "메타",
+                                    "value": 42,
+                                    category: "주식"
+                                }
+                            ];
+                            var chart = anychart.tagCloud(data);
+                            chart.angles([0]);
+                            chart.container("container");
+                            // chart.getCredits().setEnabled(false);
+                            chart.draw();
+                        });
+                        
+                        
+                        
+
+                        
+                    </script>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script id="rendered-js">
+var page = 2;
+
+
+$(window).scroll(function () {
+  if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+    console.log(++page);
+      const keyword  = '{{search_keyword_word}}'
+      console.log(keyword);
+//       if (keyword = ''){
+//           console.log("YES");
+//       }
+// console.log(document.URL.split( "feeds", 2 ));
+// console.log(window.location.href.split( "/")[4]);
+   $.ajax({
+        url:"http://223.130.163.18:9000/feeds_request/" + String(page)+ "/'"+String(keyword)+ "'/" + window.location.href.split( "/")[4],
+        type: "GET",
+        success: function (res_data) { 
+            console.log(res_data);
+            $('div[class$="card"]').append(res_data['add_data']);
+    }});
+       
+       
+       
+       
+       
+  }
+});
+//# sourceURL=pen.js
+    </script>
+
+
+
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<!-- chartist chart -->
+<script src="{{ config.ASSETS_ROOT }}/plugins/chartist-js/dist/chartist.min.js"></script>
+<script
+    src="{{ config.ASSETS_ROOT }}/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+<!--c3 JavaScript -->
+<script src="{{ config.ASSETS_ROOT }}/plugins/d3/d3.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/plugins/c3-master/c3.min.js"></script>
+<!--Custom JavaScript -->
+<script src="{{ config.ASSETS_ROOT }}/js/pages/dashboards/dashboard1.js"></script>
+
+{% endblock javascripts %}

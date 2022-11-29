@@ -23,22 +23,24 @@
     <div class="page-breadcrumb">
         <div class="row align-items-center">
             <div class="col-md-6 col-8 align-self-center">
-                {% if search_keyword %}
-                    <h3 class="page-title mb-0 p-0">"{{ search_keyword }}" 의 검색 결과</h3>
-                    <div class="d-flex align-items-center">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-    <!--                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Feeds</li> -->
-                            </ol>
-                        </nav>
-                    </div>
-                {% else %}
-
-                {% endif %}
-                
+                <h3 class="page-title mb-0 p-0">Feeds</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('home_blueprint.index') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Feeds</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-
+            <div class="col-md-6 col-4 align-self-center">
+<!--                 <div class="text-end upgrade-btn">
+                        <a href="https://appseed.us/support/"
+                        class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">
+                        Support        
+                        </a>
+                </div> -->
+            </div>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -49,106 +51,157 @@
     <!-- ============================================================== -->
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row"  >
 
-            <div class="col-lg-8 col-xlg-9">
-                <div class="card">
+            <div class="col-lg-8 col-xlg-9" style="width :80%; border:0px solid gold; margin: 10px 10px 0px 10px; padding: 0px 10px 0px 0px;">
+                 {% if main_YN == "Y" %}
+                   <form id="form" action="{{ url_for('home_blueprint.feeds_main') }}" method="POST"> 
+                 {% else %}
+                    <form id="form" action="{{ url_for('home_blueprint.feeds_tab', tab=tab) }}" method="POST"> 
+                {% endif %}
+
+                
+             
+                  <input type="search" id="search_keyword" name="search_keyword" placeholder=" {{search_keyword_word}}">
+                  <button>Search</button>
+                </form>
+
+                
+<!--                 <li class="nav-item search-box">
+                            <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
+                 
+                    
+                    
+                            <form  action="{{ url_for('home_blueprint.feeds_main') }}" method="POST">
+                                <input type="text" class="form-control" name="key_word" placeholder="검색어를 입력하세요">
+                                <input type="submit" class="form_submit" placeholder="검색">
+                                <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                        </li> -->
+                
+                <div class="card" >
 
                         <ul class="nav nav-tabs profile-tab" role="tablist">
 
                             <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_main') }}" name="total">Total</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='google') }}" name="google">구글뉴스</a>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='뉴스') }}" name="google">뉴스</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='blind') }}" name="blind">Blind 투자게시판</a> 
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='appstore') }}" name="appstore">Appstore</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='해외주식갤러리') }}" name="playstore">dcinside_해외주식갤러리</a>
+                             <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='Playstore') }}" name="Playstore">Playstore</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='미국주식갤러리') }}" name="playstore">dcinside_미국주식갤러리</a>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='dcinside투자게시판') }}" name="playstore">dcinside_투자관련</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='naver') }}" name="naver">Naver 종목토론실</a>
+                         
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='네이버종목토론실') }}" name="naver">Naver 종목토론실</a>
+                            </li>
+
+
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('home_blueprint.feeds_tab', tab='유튜브') }}" name="naver">Youtube 스마트머니</a>
                             </li>
                         </ul>
-
+                    
+                    
                     <tbody>
                       {% for row in row_data %}
                         
                       <tr>
 
-                      <div class="tab-content">
-                       
-                          
-                                <div class="profiletimeline border-start-0">
+                                <div class="profiletimeline border-start-0" style="border:0px solid gold; margin: 10px 10px 0px 10px; padding: 0px 10px 0px 0px;">
                                     
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{ config.ASSETS_ROOT }}/images/users/4.jpg" alt="user"
-                                                class="img-circle"> </div>
-                                        <div class="sl-right">
-                                            <div><a href="#" class="link">{{ column_names[0] }} : {{ row[0] }}</a> 
-                                                <span class="sl-date"> {{ row[2] }} </span>
-                                                <div>
-                                                    {{ row[1] }}
-                                                    <span class="sl-date"> 긍정 점수: {{ row[5] }} </span>
-                                                </div>    
-<br>
-                                                     
-                                                    {{ row[3] }}
-                                                         
-                                                    <div>
-                                                        <br>
-                                                        <a href="{{ row[7] }}" class="link" style='color:blue'> [원문보기]  </a>
+                                 
+                                            <div class="sl-left"  style="margin: 10px 10px 0px 10px; padding: 0px 0px 0px 0px; "> 
+                                                {% if "블라인드" in  row[0] %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/blind.JPG" alt="user"   class="img-circle">
+                                                {% elif "Appstore" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/appstore.JPG" alt="user"       class="img-circle">
+                                                {% elif "네이버" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/naver.JPG" alt="user"     class="img-circle">
+                                                {% elif "dcinside" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/dcinside.JPG" alt="user"     class="img-circle">                                                           {% elif "Youtube" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/youtube.JPG" alt="user"     class="img-circle">                                                           {% elif "뉴스" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/news.JPG" alt="user"     class="img-circle">                                                               {% elif "Playstore" in  row[0]  %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/Playstore.JPG" alt="user"     class="img-circle">                                                                                                                                                                                                                                
+                                                
+                                                
+                                                
+                                                {% else %}
+                                                <img src="{{ config.ASSETS_ROOT }}/images/users/4.jpg" alt="user"     class="img-circle">
+                                                {% endif %}
+                                                
+                                                
+                                            </div>
+                                        
+                                        <div class="sl-right"  style="border:0px solid gold;" >
+                                            <div><a href="#" class="link"   style="border:px solid gold; margin: 0px 0px 0px 15px;" >{{ row[0] }}</a> 
+                                                <span class="sl-date"> 작성일 :  {{ row[2][:4] }}년 {{ row[2][4:6] }}월   {{ row[2][6:8] }}일
+                                                                                    {{ row[2][9:11] }}시  {{ row[2][11:13] }}분 </span>
+                                  
+
+                                                       <div  style="border:0px solid black; margin: 0px 0px 0px 15px; padding: 0px 0px 0px 15px;">
+                                                           <b>&nbsp; &nbsp;&nbsp; &nbsp; {{ row[3] }} &nbsp; &nbsp; </b>
+                                  
+                                                        {% if row[7] %}
+                                                          <a href="{{ row[7] }}" class="link" style='color:blue' target="_blank"> [원문보기]  </a>
+                                                        {% else %}
+                                                          
+                                                        {% endif %}                                                        
                                                     </div>
+                                                    <div> &nbsp; &nbsp; 
+                                                    {% if row[1] %}
+                                                        <span class="sl-date">관련 종목:  {{ row[1] }} / </span>  
+                                                    {% else %}
+                                                    {% endif %} 
+                                                    <span class="sl-date"> 긍정도: {{ row[5] }} % </span>
+                                                </div>    
                                               
                                             </div>
                                         </div>
-                                    </div>
+                                    
                                 </div>
                            
                         
-                      </div>
+                    
  
                       <hr>
                       {% endfor %}
-                      
-                      
-                      <div class="btns"><a href="javascript:moreList();" class="btn btn-primary">더보기</a></div>
-
-                      <script>
-                          function moreList() {    
-                              $.ajax({        
-                                  url : "/feeds",        
-                                  type : "POST",        
-                                  cache : false,        
-                                  dataType: 'json',        
-                                  data : "conectType="+conectType+"&eDate="+eDate+"&sDate="+sDate+"&codeId="+codeId+"&limit="+limit,        
-                                  success : function(data) {            
-                                      //console.log(data);            
-                                      var content="";            
-                                      for(var i=0; i<data.hashMapList.length; i++){                
-                                          content +=                
-                                              "<tr>"+
-                                              "<td>"+data.hashMapList[i].area+"</td>"+
-                                              "<td>"+data.hashMapList[i].name+"</td>"+
-                                              "<td>"+data.hashMapList[i].gubun+"</td>"+
-                                              "<td>"+data.hashMapList[i].cnt+"</td>"+
-                                              "</tr>";            }
-                                      content+="<div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>";            
-                                      $('#addbtn').remove();//remove btn            
-                                      $(content).appendTo("#table");        }, 
-                                  error:function(request, status, error) { alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                                                                         }    
-                              });
-                          };
-
-                      </script>
-
                     </tbody>
-                    
-                    <!-- Tab panes -->
+                      <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script id="rendered-js">
+var page = 2;
 
-                        
+
+$(window).scroll(function () {
+  if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+    console.log(++page);
+      const keyword  = '{{search_keyword_word}}'
+      console.log(keyword);
+//       if (keyword = ''){
+//           console.log("YES");
+//       }
+// console.log(document.URL.split( "feeds", 2 ));
+// console.log(window.location.href.split( "/")[4]);
+   $.ajax({
+        url:"http://223.130.163.18:9000/feeds_request/" + String(page)+ "/'"+String(keyword)+ "'/" + window.location.href.split( "/")[4],
+        type: "GET",
+        success: function (res_data) { 
+            console.log(res_data);
+            $('div[class$="card"]').append(res_data['add_data']);
+    }});
+       
+       
+       
+       
+       
+  }
+});
+//# sourceURL=pen.js
+    </script>
+
+   
 
 {% endblock content %}
 

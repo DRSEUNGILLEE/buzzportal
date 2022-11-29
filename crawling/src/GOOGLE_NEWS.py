@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
 import sqlite3 
-conn = sqlite3.connect("/home/lsi8505/miraeasset/crawling/opinion_outside.db")
+conn = sqlite3.connect("/home/buzzportal/crawling/opinion_outside.db")
 cur = conn.cursor()
 
 import warnings

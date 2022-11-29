@@ -21,7 +21,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('user-agent={0}'.format(user_agent))
 # options =  webdriver.Chrome('/home/porter/NOTEBOOK/chromedriver',options=options)
-conn = sqlite3.connect("/home/lsi8505/miraeasset/crawling/opinion_outside.db")
+conn = sqlite3.connect("/home/buzzportal/crawling/opinion_outside.db")
 cur = conn.cursor()
 
 client_id = "l5s8tg1g0w" # 개발자센터에서 발급받은 Client ID 값
@@ -66,7 +66,7 @@ CNT = 25
 cnt = CNT
 
 url = "https://www.teamblind.com/kr/topics/주식·투자"
-driver = webdriver.Chrome('/home/lsi8505/chromedriver',options=options)
+driver = webdriver.Chrome('/home/buzzportal/crawling/chromedriver',options=options)
 driver.get(url)
 
 while cnt:
@@ -172,7 +172,7 @@ for i in range(len(url_dirs)):
     
 df_ = pd.DataFrame(data).iloc[2:].reset_index(drop=True)
 
-df_['DATETIME'] = (datetime.datetime.now() + datetime.timedelta(hours=9)).strftime('%Y%m%d-%H%M%S')
+df_['DATETIME'] = (datetime.datetime.now() ).strftime('%Y%m%d-%H%M%S')
 df_['VIEWS'] = df_['looks_count']
 df_['LIKES'] = df_['likes_count']
 df_['TITLE'] =  df_['title']
@@ -188,7 +188,7 @@ for i in range(len(df_)):
 df_['OTHERS'] = df_[['comments_count']].to_dict('records')
 df_['OTHERS'] = df_['OTHERS'].astype(str)
 df_['NUM_REPLY'] = np.nan
-df_['CRAWLING_DATETIME'] = (datetime.datetime.now() + datetime.timedelta(hours=9)).strftime('%Y%m%d-%H%M%S')
+df_['CRAWLING_DATETIME'] = (datetime.datetime.now() ).strftime('%Y%m%d-%H%M%S')
 df_['URL'] =  np.nan
 df_ = df_[['SOURCE','RELATED_ITEM',"DATETIME","TITLE","CONTENT","POSITIVITY","NUM_REPLY",'URL',"CRAWLING_DATETIME","OTHERS"]]
 df_
@@ -210,12 +210,13 @@ else:
     
 df_ttl = df_ttl.drop(['YYYYMMDD'],axis=1)
 df_ttl
+driver.quit()
 
 if len(df_ttl) >0:
     df_ttl = df_ttl.reset_index(drop=True)
 
     df_ttl.to_sql('TABLE_BUZZ',conn,if_exists = 'append',index = False)
-    print((datetime.datetime.now() + datetime.timedelta(hours=9)).strftime('%Y%m%d-%H%M%S') , " SUCCESS  : ",len(df_ttl))
+    print((datetime.datetime.now() ).strftime('%Y%m%d-%H%M%S') , " SUCCESS  : ",len(df_ttl))
 
 else:
-    print((datetime.datetime.now() + datetime.timedelta(hours=9)).strftime('%Y%m%d-%H%M%S') , " NO DATA TO UPDATE")
+    print((datetime.datetime.now() ).strftime('%Y%m%d-%H%M%S') , " NO DATA TO UPDATE")

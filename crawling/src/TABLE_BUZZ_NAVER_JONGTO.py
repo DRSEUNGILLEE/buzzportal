@@ -1,6 +1,8 @@
 import sqlite3 
-conn = sqlite3.connect("/home/lsi8505/miraeasset/crawling/opinion_outside.db")
+
+conn = sqlite3.connect("/home/buzzportal/crawling/opinion_outside.db")
 cur = conn.cursor()
+
 
 import re
 from bs4 import BeautifulSoup
@@ -113,7 +115,7 @@ for com in range(len(df_company)):
         df_['OTHERS'] = df_[['WRITER']].to_dict('records')
         df_['OTHERS'] = df_['OTHERS'].astype(str)
         df_['NUM_REPLY'] = df_['TITLE'].apply(lambda x: x.split('[')[1].replace("]","") if len(x.split('[')) == 2 else 0)
-        df_['CRAWLING_DATETIME'] = (datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S')
+        df_['CRAWLING_DATETIME'] = (datetime.now() ).strftime('%Y%m%d-%H%M%S')
         df_['URL'] =  url_l
         df_
 
@@ -137,9 +139,9 @@ for com in range(len(df_company)):
 
         df_ttl
         df_ttl.to_sql('TABLE_BUZZ',conn,if_exists = 'append',index = False)
-        print((datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S') , "네이버종토_{} SUCCESS  : ".format(df_company.loc[com,'company']),len(df_ttl))
+        print((datetime.now() ).strftime('%Y%m%d-%H%M%S') , "네이버종토_{} SUCCESS  : ".format(df_company.loc[com,'company']),len(df_ttl))
     else:
-        print((datetime.now() + timedelta(hours=9)).strftime('%Y%m%d-%H%M%S'), "네이버종토_{} NO DATA TO UPDATE".format(df_company.loc[com,'company']))
+        print((datetime.now() ).strftime('%Y%m%d-%H%M%S'), "네이버종토_{} NO DATA TO UPDATE".format(df_company.loc[com,'company']))
 
 
 
